@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Proyecto Admin. Redes</title>
+  </head>
+  <body>
+    <!-- NAV BAR-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="img/fi.png" width="80" height="80" class="d-inline-block align-top" alt="fi-logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item ">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cuestionario.html">Cuestionario</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="subnet.html">Subnetting<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- FIN NAV BAR-->
+    <!--FORM-->
+    <div class="container">
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="formGroupExampleInput">Direccion IP:</label>
+            <input type="text" class="form-control" id="ip" placeholder="X.X.X.X">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Mascara:</label>
+            <input type="text" class="form-control" id="mask" placeholder="0/32">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">No. Subredes:</label>
+            <input type="text" class="form-control" id="subnet" placeholder="n">
+          </div>
+          <button id="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Calcular</button>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="info" style="margin: 40px 0 40px 0;"></div>
+    </div>
+    <!--FIN FORM-->
+    <div id="table" style="visibility: hidden; margin-top: 20px">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Segmento</th>
+          <th scope="col">IP inicio</th>
+          <th scope="col">IP final</th>
+          <th scope="col">Broadcast</th>
+          <th scope="col">Hosts</th>
+          <th scope="col">Máscara</th>
+        </tr>
+      </thead>
+      <tbody class="table-body">
+        <!-- here goes the subnetting content... -->
+      </tbody>
+    </table>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/subnetting.js"></script>
+    <script>
+    function valuap(respuest){ //recibe un entero que indica la respuesta seleccionada
+    if(parseInt(respuest)==this.correcta){
+    var reto;
+    alert("Es correcta");
+    reto=true;
+    return reto
+    }else{
+    alert("Es false");
+    return reto
+    }
+    }
+    function pregunta(pregun,respuesta1,respuesta2,respuesta3,respuesta4,correcta){
+    this.pregun=pregun;
+    
+    this.respuestas=[];
+    
+    this.respuestas[0]=respuesta1;
+    this.respuestas[1]=respuesta2;
+    this.respuestas[2]=respuesta3;
+    this.respuestas[3]=respuesta4;
+    
+    this.correcta=parseInt(correcta);
+    this.ocupado=false;
+    this.valuap=valuap;
+    
+    
+    }
+    var retorno=[];
+    var preguntas=[];
+    /* En esta parte incluiran sus preguntas debes ser mas de 10 para que se pueda ajecutar
+    el script
+    */
+    preguntas[0]=new pregunta("Definición de Función.","Relación entre dos variables","Función computable","Técnica de idealización","Algo que sirve",0);
+    preguntas[1]=new pregunta("Definición de Funciónes computables.","Virtual","Que se hace en la computadora","Registro","Algoritmo determinado que puede implementarse en un sistema específico",3);
+    preguntas[2]=new pregunta("Definición de Recursividad.","Algo raro","Que es verdadero","Alternativa para implementar estructuras e repetición.","Pruebas de aceptación",2);
+    preguntas[3]=new pregunta("Es una relación entre dominio y contradominio","Computabilidad","Función","Recursividad","Algoritmo",1);
+    preguntas[4]=new pregunta("Es una función parcial X cuyo dominio es todo el conjunto X.","Función Total de X","Función Parcial de X","Función Computable","Recursividad",0);
+    preguntas[5]=new pregunta("Son ejemplos de funciones computables.","Algoritmo y recursividad","Función parcial","Función suma y constante","Máquina de Turing",1);
+    preguntas[6]=new pregunta("Es la propiedad que se tiene para repetirse indefinidamente.","Computabilidad","Algoritmo","Programa","Recursividad",3);
+    preguntas[7]=new pregunta("Pueden calcularse por medio de algún algoritmo.","Dominio","Función","Función Computable","Algoritmo",2);
+    preguntas[8]=new pregunta("¿Cómo se clasifican las funciones recursivas primitivas?","Funciones computables y no computables","Funciones µ-recursivas y parciales","Funciones µ-recursivas y tabulares","Funciones totales y parciales",2);
+    preguntas[9]=new pregunta("Representación de las Máquinas de Turing","Diagrama de estados finitos","Mapa Mental","Mapa Conceptual","Máquinas",0);
+    preguntas[10]=new pregunta("Una función es computable si y sólo si:","Existe","Hay una máquina de Turing que la compute","Es imaginario","Computable",1);
+    preguntas[11]=new pregunta("Representación de una transición desde un estado a otro en una Máquina de Turing","Diagrama de estados finitos","Arista","Punto","Vértice",1);
+    preguntas[12]=new pregunta("¿Cuál es la clasificación de las funciones computables?","Funciones vectoriales y escalares","Funciones de primer y segundo orden","Funciones µ-recursivas y tabulares","Funciones parciales, totales, iniciales y recursivas primitivas",3);
+    preguntas[13]=new pregunta("Constituyen la jerarquía de las funciones computables.","Funciones parciales","Funciones recursivas","Funciones computables","Funciones iniciales",3);
+    preguntas[14]=new pregunta("Una función parcial de un conjunto X es aquella cuyo dominio constituye un subconjunto de X","Funciones parciales","Funciones recursivas","Funciones computables","Funciones iniciales",0);
+    preguntas[15]=new pregunta("Son las funciones totales computables y son la mínima clase de funciones que contiene a las funciones iniciales.","Funciones parciales","Funciones recursivas","Funciones µ-recursivas","Funciones iniciales",2);
+    preguntas[16]=new pregunta("Es un método ordenado y finito de resolución de problemas.","Dominio","Función","Función Computable","Algoritmo",3);
+    preguntas[17]=new pregunta("Se componen de tuplas de entrada o pertenecen a la colección de las funciones conocidas como proyecciones.","Funciones iniciales","Función","Función Computable","Algoritmo",0);
+    preguntas[18]=new pregunta("Son las funciones que pueden definirse en una tabla en la cual se presenta explícitamente en una lista un número finito de entradas posibles junto con sus valores de salida correspondientes, y todas las demás entradas se asocian a un solo valor común.","Funciones parciales","Funciones tabulares","Funciones µ-recursivas","Funciones iniciales",1);
+    preguntas[19]=new pregunta("Pueden calcularse por medio de algún algoritmo.","Dominio","Función","Función Computable","Algoritmo",2);
+    preguntas[20]=new pregunta("¿Cómo se clasifican las funciones recursivas primitivas?","Funciones computables y no computables","Funciones µ-recursivas y parciales","Funciones µ-recursivas y tabulares","Funciones totales y parciales",2);
+    
+    /**
+    * subnetting
+    */
+    // document.getElementById('submit').addEventListener('click', function(){
+      
+    // })
+    
+    </script>
+  </body>
+</html>
