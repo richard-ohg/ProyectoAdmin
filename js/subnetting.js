@@ -56,7 +56,7 @@ function getDecimalMask(binary) {
 	
 function getNewMask(mask, subnet) {
 	let n = 0
-	while((Math.pow(2, n) -2) < subnet) {
+	while((Math.pow(2, n)) < subnet) {
 		n++
 	}
 	let addMask = n
